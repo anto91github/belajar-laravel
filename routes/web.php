@@ -16,3 +16,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/about', function () {
+    return (6*9);    
+});
+
+Route::get('/contact', function () {
+    return view('contact', ['name'=> 'Fajar', 'phone' => '0812.....']);   
+});
+
+// Route::view('/contact', 'contact', ['name'=> 'Fajar', 'phone' => '0812.....']);
