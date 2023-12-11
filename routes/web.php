@@ -18,12 +18,13 @@ Route::get('/', function () {
     return view('home', [
         'name' => 'cara fajar', 
         'role' => 'admin',
-        'buah' => ['apel', 'jeruk', 'semangka']
+        'buah' => ['apel', 'jeruk', 'semangka'],
+        'pageTitle' => 'home'
     ]);
 });
 
 Route::get('/about', function () {
-    return (6*9);    
+    return view('about', ['pageTitle' => 'about']);    
 });
 
 Route::get('/contact', function () {
