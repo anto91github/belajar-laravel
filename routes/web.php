@@ -26,3 +26,21 @@ Route::get('/contact', function () {
 });
 
 // Route::view('/contact', 'contact', ['name'=> 'Fajar', 'phone' => '0812.....']);
+
+Route::redirect('/here', '/there');
+
+Route::get('/product/{id}', function ($id) {
+    // return 'product id = '.$id;
+    return view('product.detail', ['id' => $id]);
+});
+
+Route::prefix('admin')->group(function () {
+    Route::get('/users', function () {
+        return 'admin-users';
+    });
+
+    Route::get('/profile', function () {
+        return 'admin-profile';
+    });
+});
+
