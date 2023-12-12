@@ -25,6 +25,20 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link 
+                        @if($pageTitle == 'students')
+                            active
+                        @endif
+                    " aria-current="page" href="/students">Students</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link 
+                        @if($pageTitle == 'class')
+                            active
+                        @endif
+                    " aria-current="page" href="/class">Class</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link 
                         @if($pageTitle == 'about')
                             active
                         @endif
