@@ -49,6 +49,34 @@ class StudentController extends Controller
         // dd($student);
         $studentList = Student::all();
 
+        $nilai = [1,2,3,4,5,6,7,8,9];
+        $nilai2 = [1,1,2,3,4,5,6,7,8];
+        $doubleArray = [
+            ['product_id' => 'prod-100', 'name' => 'Desk'],
+            ['product_id' => 'prod-200', 'name' => 'Chair'],
+        ];
+
+        $nilairata2 = collect($nilai)->avg();
+
+        $mengandung = collect($nilai)->contains(9);
+        $mengandung2 = collect($nilai)->contains(function($val){
+            return $val>11;
+        });
+
+        $perbedaan = collect($nilai)->diff($nilai2);
+
+        $filter = collect($nilai)->filter(function($val) {
+            return $val > 5;
+        });
+
+        $memetik = collect($doubleArray)->pluck('name')->all();
+
+        $multiplied = collect($nilai)->map(function ($val) {
+            return $val*2;
+        });
+
+        dd($multiplied);
+
         return view('student',[
             'pageTitle' => 'students',
             'studentList' => $studentList
