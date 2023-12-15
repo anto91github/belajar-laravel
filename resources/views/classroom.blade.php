@@ -9,6 +9,7 @@
             <tr>
                 <th>No.</th>
                 <th>Name</th>
+                <th>Student Name</th>
             </tr>
         </thead>
         <tbody>
@@ -16,6 +17,15 @@
             <tr>
                 <td>{{$loop->iteration}}</td>
                 <td>{{$data->name}}</td>
+                <td>
+                @foreach($data->student as $s)
+                    {{$s->name}}
+                    @if( !$loop->last)
+                    ,
+                    @endif
+                @endforeach
+                </td>
+                
             </tr>
             @endforeach
         </tbody>

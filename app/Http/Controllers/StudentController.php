@@ -47,7 +47,9 @@ class StudentController extends Controller
         // Student::find(44)->delete();
 
         // dd($student);
-        $studentList = Student::all();
+
+        // $studentList = Student::all(); // Lazy Loading
+        $studentList = Student::with('class')->get(); // Eager loading (recomended)
 
         $nilai = [1,2,3,4,5,6,7,8,9];
         $nilai2 = [1,1,2,3,4,5,6,7,8];
@@ -75,7 +77,7 @@ class StudentController extends Controller
             return $val*2;
         });
 
-        dd($multiplied);
+        // dd($multiplied);
 
         return view('student',[
             'pageTitle' => 'students',
