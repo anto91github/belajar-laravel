@@ -13,6 +13,7 @@
             <th>NIS</th>
             <th>Class ID</th>
             <th>Class Name</th>
+            <th>Ekskul</th>
         </thead>
         <tbody>
             @foreach ($studentList as $data)
@@ -23,6 +24,12 @@
                     <td>{{$data->nis}}</td>
                     <td>{{$data->class_id}}</td>
                     <td>{{$data->class['name']}}</td>
+                    <td>
+                        @foreach($data->ekskul as $eks)
+                            - {{$eks->name}} <br>
+                        @endforeach
+                        
+                    </td>
                 </tr>
             @endforeach
         </tbody>

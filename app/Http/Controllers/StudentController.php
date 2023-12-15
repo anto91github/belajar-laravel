@@ -49,7 +49,7 @@ class StudentController extends Controller
         // dd($student);
 
         // $studentList = Student::all(); // Lazy Loading
-        $studentList = Student::with('class')->get(); // Eager loading (recomended)
+        $studentList = Student::with(['class', 'ekskul'])->get(); // Eager loading (recomended)
 
         $nilai = [1,2,3,4,5,6,7,8,9];
         $nilai2 = [1,1,2,3,4,5,6,7,8];
