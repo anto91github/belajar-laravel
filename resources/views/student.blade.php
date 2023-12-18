@@ -11,10 +11,11 @@
             <th>Name</th>
             <th>Gender</th>
             <th>NIS</th>
-            <th>Class ID</th>
-            <th>Class Name</th>
+            {{-- <th>Class ID</th> --}}
+            {{-- <th>Class Name</th>
             <th>Ekskul</th>
-            <th>HomeRoom Teacher</th>
+            <th>HomeRoom Teacher</th> --}}
+            <th>Action</th>
         </thead>
         <tbody>
             @foreach ($studentList as $data)
@@ -23,14 +24,15 @@
                     <td>{{$data->name}}</td>
                     <td>{{$data->gender}}</td>
                     <td>{{$data->nis}}</td>
-                    <td>{{$data->class_id}}</td>
-                    <td>{{$data->class['name']}}</td>
+                    {{-- <td>{{$data->class_id}}</td> --}}
+                    {{-- <td>{{$data->class['name']}}</td>
                     <td>
                         @foreach($data->ekskul as $eks)
                             - {{$eks->name}} <br>
                         @endforeach
                     </td>
-                    <td>{{$data->class->homeRoomTeacher->name}}</td>
+                    <td>{{$data->class->homeRoomTeacher->name}}</td> --}}
+                    <td><a href="student/{{$data->id}}">Detail</a></td>
                 </tr>
             @endforeach
         </tbody>

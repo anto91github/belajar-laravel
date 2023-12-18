@@ -9,8 +9,9 @@
             <tr>
                 <th>No.</th>
                 <th>Name</th>
-                <th>Student Name</th>
-                <th>Homeroom Teacher</th>
+                {{-- <th>Student Name</th>
+                <th>Homeroom Teacher</th> --}}
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -18,7 +19,7 @@
             <tr>
                 <td>{{$loop->iteration}}</td>
                 <td>{{$data->name}}</td>
-                <td>
+                {{-- <td>
                 @foreach($data->student as $s)
                     {{$s->name}}
                     @if( !$loop->last)
@@ -28,9 +29,9 @@
                 </td>
                 <td>
                     {{$data->homeRoomTeacher->name}}
-                </td>
+                </td> --}}
 
-                
+                <td><a href="class/{{$data->id}}">Detail</a></td>
             </tr>
             @endforeach
         </tbody>

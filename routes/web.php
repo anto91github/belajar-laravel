@@ -28,10 +28,16 @@ Route::get('/', function () {
 });
 
 Route::get('/students', [StudentController::class, 'index']);
+Route::get('/student/{id}', [StudentController::class, 'show']);
 
 Route::get('/class', [ClassController::class, 'index']);
+Route::get('/class/{id}', [ClassController::class, 'show']);
+
 Route::get('/ekskul', [EkskulController::class, 'index']);
+Route::get('/ekskul/{id}', [EkskulController::class, 'show']);
+
 Route::get('/teacher', [TeacherController::class, 'index']);
+Route::get('/teacher/{id}', [TeacherController::class, 'show']);
 
 Route::get('/about', function () {
     return view('about', ['pageTitle' => 'about']);    

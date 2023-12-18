@@ -8,7 +8,8 @@ use Illuminate\Http\Request;
 class EkskulController extends Controller
 {
     public function index(){
-        $ekskul = Ekskul::with('student')->get();
+        // $ekskul = Ekskul::with('student')->get();
+        $ekskul = Ekskul::get();
 
         // dd($ekskul);
 
@@ -16,5 +17,15 @@ class EkskulController extends Controller
             'pageTitle' => 'ekskul',
             'ekskulList' => $ekskul
         ]);
+    }
+
+    public function show($id){
+        $ekskul = Ekskul::with('student')->findOrFail($id);
+
+        return view('ekskul-detail',[
+            'pageTitle' => 'ekskul',
+            'ekskul' => $ekskul
+        ]);
+
     }
 }

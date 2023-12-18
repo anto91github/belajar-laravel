@@ -9,20 +9,23 @@
         <thead>
             <th>#</th>
             <th>Name</th>
-            <th>Student</th>
+            {{-- <th>Student</th> --}}
+            <th>Action</th>
         </thead>
         <tbody>
             @foreach ($ekskulList as $data)
                 <tr>
                     <td>{{$loop->iteration}}</td>
                     <td>{{$data->name}}</td>
-                    <td>
+                    {{-- <td>
                         @foreach($data->student as $s)
                         {{$s -> name}} <br>
                         @endforeach
                         
-                    </td>
+                    </td> --}}
+                    <td><a href="ekskul/{{$data->id}}">Detail</a></td>
                 </tr>
+                
             @endforeach
         </tbody>
     </table>
