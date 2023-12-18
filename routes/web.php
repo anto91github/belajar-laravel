@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClassController;
 use App\Http\Controllers\EkskulController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\TeacherController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +31,7 @@ Route::get('/students', [StudentController::class, 'index']);
 
 Route::get('/class', [ClassController::class, 'index']);
 Route::get('/ekskul', [EkskulController::class, 'index']);
+Route::get('/teacher', [TeacherController::class, 'index']);
 
 Route::get('/about', function () {
     return view('about', ['pageTitle' => 'about']);    

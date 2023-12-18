@@ -14,6 +14,7 @@
             <th>Class ID</th>
             <th>Class Name</th>
             <th>Ekskul</th>
+            <th>HomeRoom Teacher</th>
         </thead>
         <tbody>
             @foreach ($studentList as $data)
@@ -28,8 +29,8 @@
                         @foreach($data->ekskul as $eks)
                             - {{$eks->name}} <br>
                         @endforeach
-                        
                     </td>
+                    <td>{{$data->class->homeRoomTeacher->name}}</td>
                 </tr>
             @endforeach
         </tbody>

@@ -39,6 +39,13 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link 
+                        @if($pageTitle == 'teacher')
+                            active
+                        @endif
+                    " aria-current="page" href="/teacher">Teacher</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link 
                         @if($pageTitle == 'ekskul')
                             active
                         @endif
