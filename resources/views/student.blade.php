@@ -5,6 +5,10 @@
     <h1>This is Student</h1>
     <h3>Student List</h3>
 
+    <div class="my-5">
+        <a href="student-add" class="btn btn-primary">Add Data</a>
+    </div>
+
     <table class="table">
         <thead>
             <th>#</th>

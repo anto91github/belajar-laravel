@@ -29,6 +29,8 @@ Route::get('/', function () {
 
 Route::get('/students', [StudentController::class, 'index']);
 Route::get('/student/{id}', [StudentController::class, 'show']);
+Route::get('/student-add', [StudentController::class, 'create']);
+Route::post('/student', [StudentController::class, 'store']);
 
 Route::get('/class', [ClassController::class, 'index']);
 Route::get('/class/{id}', [ClassController::class, 'show']);
