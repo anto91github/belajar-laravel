@@ -94,8 +94,6 @@ class StudentController extends Controller
             'pageTitle' => 'students',
             'student' => $student
         ]);
-        dd($student);
-        
     }
 
     public function create() 
@@ -134,5 +132,33 @@ class StudentController extends Controller
 
        return redirect('/students');
 
+    }
+
+    public function edit($id)
+    {
+        $student = Student::with(['class.homeRoomTeacher', 'ekskul'])->findOrFail($id);
+        $classList = ClassRoom::select('id', 'name')->get();
+        return view('student-edit',[
+            'pageTitle' => 'students',
+            'student' => $student,
+            'classList'=> $classList,
+        ]);
+    }
+
+    public function update(Request $request, $id)
+    {
+
+        //mass asignment
+        // $student = Student::findOrFail($id);
+        // $student->update($request->all());
+
+        $student = Student::findOrFail($id)->update([
+            'name' => $request->name,
+            'gender' => $request->gender,
+            'nis' => $request->nis,
+            'class_id' => $request->class_id
+        ]);
+        
+        return redirect('/students');
     }
 }

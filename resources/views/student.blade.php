@@ -36,7 +36,11 @@
                         @endforeach
                     </td>
                     <td>{{$data->class->homeRoomTeacher->name}}</td> --}}
-                    <td><a href="student/{{$data->id}}">Detail</a></td>
+                    <td>
+                        <a href="student/{{$data->id}}">Detail</a>
+                        |
+                        <a href="student-edit/{{$data->id}}">Edit</a>
+                    </td>
                 </tr>
             @endforeach
         </tbody>
