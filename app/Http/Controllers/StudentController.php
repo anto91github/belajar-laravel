@@ -6,6 +6,7 @@ use App\Models\Student;
 use App\Models\ClassRoom;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class StudentController extends Controller
 {
@@ -129,6 +130,14 @@ class StudentController extends Controller
             'nis' => $request->nis,
             'class_id' => $request->class_id
         ]);
+
+        if($student){
+            Session::flash('status','success');
+            Session::flash('message','Sukses Insert Data');
+        } else {
+            Session::flash('status','failed');
+            Session::flash('message','Gagal Insert Data');
+        }
 
        return redirect('/students');
 
