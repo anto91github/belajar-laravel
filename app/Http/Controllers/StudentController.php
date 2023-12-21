@@ -53,6 +53,7 @@ class StudentController extends Controller
 
         // $studentList = Student::all(); // Lazy Loading
         // $studentList = Student::with(['class.homeRoomTeacher', 'ekskul'])->get(); // Eager loading (recomended)
+        // $studentList = Student::withTrashed()->get();
         $studentList = Student::get();
 
         $nilai = [1,2,3,4,5,6,7,8,9];
@@ -198,6 +199,30 @@ class StudentController extends Controller
         } else {
             Session::flash('status','failed');
             Session::flash('message','Gagal Delete Data');
+        }
+
+        return redirect('/students');
+    }
+
+    public function deletedStudent()
+    {
+        $deleted = Student::onlyTrashed()->get();
+        return view('student-deleted-list',[
+            'deleted' => $deleted,
+            'pageTitle' => 'students'
+        ]);
+    }
+
+    public function restore($id)
+    {
+        $restore = Student::withTrashed()->where('id', $id)->restore();
+
+        if($restore){
+            Session::flash('status','success');
+            Session::flash('message','Sukses Restore Data');
+        } else {
+            Session::flash('status','failed');
+            Session::flash('message','Gagal Restore Data');
         }
 
         return redirect('/students');

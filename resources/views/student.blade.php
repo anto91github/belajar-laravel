@@ -5,8 +5,9 @@
     <h1>This is Student</h1>
     <h3>Student List</h3>
 
-    <div class="my-5">
+    <div class="my-5 d-flex justify-content-between">
         <a href="student-add" class="btn btn-primary">Add Data</a>
+        <a href="student-deleted" class="btn btn-info">Show Deleted Data</a>
     </div>
 
     @if (Session::has('status'))
