@@ -46,6 +46,8 @@
                         <a href="student/{{$data->id}}">Detail</a>
                         |
                         <a href="student-edit/{{$data->id}}">Edit</a>
+                        |
+                        <a href="student-delete/{{$data->id}}">Delete</a>
                     </td>
                 </tr>
             @endforeach

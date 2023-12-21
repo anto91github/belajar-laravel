@@ -178,4 +178,28 @@ class StudentController extends Controller
         
         return redirect('/students');
     }
+
+    public function delete($id)
+    {
+        $student = Student::findOrFail($id);
+        return view('student-delete',[
+            'student' => $student,
+            'pageTitle' => 'students'
+        ]);
+    }
+
+    public function destroy($id)
+    {
+        $delete = Student::findOrFail($id)->delete();
+
+        if($delete){
+            Session::flash('status','success');
+            Session::flash('message','Sukses Delete Data');
+        } else {
+            Session::flash('status','failed');
+            Session::flash('message','Gagal Delete Data');
+        }
+
+        return redirect('/students');
+    }
 }
