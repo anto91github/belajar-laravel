@@ -11,7 +11,7 @@ use App\Http\Requests\StudentCreateRequest;
 
 class StudentController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
        // $student = DB::table('students')->get();
         
@@ -54,7 +54,15 @@ class StudentController extends Controller
         // $studentList = Student::all(); // Lazy Loading
         // $studentList = Student::with(['class.homeRoomTeacher', 'ekskul'])->get(); // Eager loading (recomended)
         // $studentList = Student::withTrashed()->get();
-        $studentList = Student::paginate(15);
+        $keyword = $request->pencarian;
+        $studentList = Student::with('class')
+                        ->where('name', 'LIKE', '%'.$keyword.'%')
+                        ->orWhere('gender', $keyword)
+                        ->orWhere('nis', 'LIKE', '%'.$keyword.'%')
+                        ->orWhereHas('class', function($query) use($keyword){
+                            $query->where('name', 'LIKE', '%'.$keyword.'%');
+                        })
+                        ->paginate(15);
         // $studentList = Student::simplePaginate(15);
         // $studentList = Student::get();
 
