@@ -54,7 +54,9 @@ class StudentController extends Controller
         // $studentList = Student::all(); // Lazy Loading
         // $studentList = Student::with(['class.homeRoomTeacher', 'ekskul'])->get(); // Eager loading (recomended)
         // $studentList = Student::withTrashed()->get();
-        $studentList = Student::get();
+        $studentList = Student::paginate(15);
+        // $studentList = Student::simplePaginate(15);
+        // $studentList = Student::get();
 
         $nilai = [1,2,3,4,5,6,7,8,9];
         $nilai2 = [1,1,2,3,4,5,6,7,8];

@@ -31,7 +31,8 @@
         <tbody>
             @foreach ($studentList as $data)
                 <tr>
-                    <td>{{$loop->iteration}}</td>
+                    {{-- <td>{{$loop->iteration}}</td> --}}
+                    <td>{{ $studentList->firstItem() + $loop->index }}</td>
                     <td>{{$data->name}}</td>
                     <td>{{$data->gender}}</td>
                     <td>{{$data->nis}}</td>
@@ -54,5 +55,9 @@
             @endforeach
         </tbody>
     </table>
+    <div class='my-5'>
+        {{$studentList->links()}}
+    </div>
+    
     
 @endsection
