@@ -3,8 +3,9 @@
 
 @section('content')
     <h1>This is home</h1>
-    <h2> Welcome {{$name}}</h2>
-    <h2> Your role {{$role}}</h2>
+    <h2> Welcome {{Auth::user()->name}}</h2>
+    <h2> Your role {{Auth::user()->role->name}}</h2>
+    
 
     {{-- @if ($role == 'admin')
         <a href=""> go to admin </a>
