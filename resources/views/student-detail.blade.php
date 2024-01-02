@@ -5,6 +5,13 @@
     <h2>Student Detail</h2>
     {{-- {{$student}} --}}
     <h3>Data Siswa : </h3>
+    <div class='my-3 d-flex justify-content-center'>
+        @if($student->image !='')
+            <img src="{{asset('storage/studentsPhoto/'.$student->image)}}" width="200px">
+        @else
+            <img src="{{asset('images/anonymus.jpg')}}" width="200px">
+        @endif
+    </div>
     <table class="table table-bordered">
         <tr>
             <th>NIS</th>

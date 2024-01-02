@@ -6,7 +6,7 @@
     
 
     <div class="mt-5 col-8 m-auto">
-        <form action='/student/{{$student->id}}' method='post'>
+        <form action='/student/{{$student->id}}' method='post' enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="mb-3">
@@ -48,6 +48,13 @@
                         >{{$class->name}}</option>
                     @endforeach
                 </select>
+            </div>
+
+            <div class="mb-3">
+                <label for='photo'>Photo</label>
+                <div class="input-group">
+                    <input type="file" class="form-control" id="photo" name="photo">
+                </div>
             </div>
 
             <button class="btn btn-success" type="submit">Update</button>

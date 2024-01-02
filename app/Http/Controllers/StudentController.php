@@ -7,6 +7,7 @@ use App\Models\ClassRoom;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StudentCreateRequest;
 
 class StudentController extends Controller
@@ -140,14 +141,27 @@ class StudentController extends Controller
 
         // $student->save();
 
-        //mass asignment
+        //mass assignment
         // $student = Student::create($request->all());
 
+        //upload image
+        $fileName = '';
+
+        if($request->file('photo')){
+            $extension = $request->file('photo')->getClientOriginalExtension();
+            $statement = DB::select("show table status like 'students'");
+            $newID = $statement[0]->Auto_increment;
+            $fileName = $request->name.'-'.$newID.'-'.now()->timestamp.'.'.$extension;
+            $path = $request->file('photo')->storeAs('studentsPhoto', $fileName);
+        }
+
+        // $request['image'] = $fileName; // agar megisi ke kolom 'image' jika menggunakan mass assignment
         $student = Student::create([
             'name' => $request->name,
             'gender' => $request->gender,
             'nis' => $request->nis,
-            'class_id' => $request->class_id
+            'class_id' => $request->class_id,
+            'image' => $fileName
         ]);
 
         if($student){
@@ -175,16 +189,29 @@ class StudentController extends Controller
 
     public function update(Request $request, $id)
     {
-
         //mass asignment
         // $student = Student::findOrFail($id);
         // $student->update($request->all());
+
+        //upload image
+        $student = Student::findOrFail($id);
+        $fileName = '';
+
+        if($request->file('photo')){
+            //delete old image
+            Storage::delete('studentsPhoto/'.$student->image);
+
+            $extension = $request->file('photo')->getClientOriginalExtension();
+            $fileName = $request->name.'-'.$id.'-'.now()->timestamp.'.'.$extension;
+            $path = $request->file('photo')->storeAs('studentsPhoto', $fileName);
+        }
 
         $student = Student::findOrFail($id)->update([
             'name' => $request->name,
             'gender' => $request->gender,
             'nis' => $request->nis,
-            'class_id' => $request->class_id
+            'class_id' => $request->class_id,
+            'image' =>  $fileName
         ]);
         
         return redirect('/students');
