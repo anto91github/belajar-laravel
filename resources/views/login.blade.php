@@ -19,9 +19,9 @@
     <div class="vh-100 d-flex justify-content-center align-items-center flex-column">
 
         @if(Session::has('status'))
-            
+            <div class="alert alert-danger" role="alert">
                 {{Session::get('message')}}
-            
+            </div>
         @endif
 
         <div class="login-box">

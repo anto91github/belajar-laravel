@@ -33,15 +33,15 @@ Route::post('/login', [AuthController::class, 'authenticating'])->middleware('gu
 Route::get('/logout', [AuthController::class, 'logout'])->middleware('auth');
 
 Route::get('/students', [StudentController::class, 'index'])->middleware('auth');
-Route::get('/student/{id}', [StudentController::class, 'show'])->middleware('auth');
-Route::get('/student-add', [StudentController::class, 'create'])->middleware('auth');
-Route::get('/student-edit/{id}', [StudentController::class, 'edit'])->middleware('auth');
-Route::post('/student', [StudentController::class, 'store'])->middleware('auth');
-Route::put('/student/{id}', [StudentController::class, 'update'])->middleware('auth');
-Route::get('/student-delete/{id}', [StudentController::class, 'delete'])->middleware('auth');
-Route::delete('/student-destroy/{id}', [StudentController::class, 'destroy'])->middleware('auth');
-Route::get('/student-deleted', [StudentController::class, 'deletedStudent'])->middleware('auth');
-Route::get('/student/{id}/restore', [StudentController::class, 'restore'])->middleware('auth');
+Route::get('/student/{id}', [StudentController::class, 'show'])->middleware(['auth','must-admin-or-teacher']);
+Route::get('/student-add', [StudentController::class, 'create'])->middleware(['auth','must-admin-or-teacher']);
+Route::get('/student-edit/{id}', [StudentController::class, 'edit'])->middleware(['auth','must-admin-or-teacher']);
+Route::post('/student', [StudentController::class, 'store'])->middleware(['auth','must-admin-or-teacher']);
+Route::put('/student/{id}', [StudentController::class, 'update'])->middleware(['auth','must-admin-or-teacher']);
+Route::get('/student-delete/{id}', [StudentController::class, 'delete'])->middleware(['auth','must-admin']);
+Route::delete('/student-destroy/{id}', [StudentController::class, 'destroy'])->middleware(['auth','must-admin']);
+Route::get('/student-deleted', [StudentController::class, 'deletedStudent'])->middleware(['auth','must-admin']);
+Route::get('/student/{id}/restore', [StudentController::class, 'restore'])->middleware(['auth','must-admin']);
 
 Route::get('/class', [ClassController::class, 'index'])->middleware('auth');
 Route::get('/class/{id}', [ClassController::class, 'show'])->middleware('auth');

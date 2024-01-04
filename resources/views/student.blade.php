@@ -11,9 +11,16 @@
     </div>
 
     @if (Session::has('status'))
-        <div class="alert alert-success" role="alert">
-            {{Session::get('message')}}
-        </div>
+        @if (Session::get('status') == 'success')
+            <div class="alert alert-success" role="alert">
+                {{Session::get('message')}}
+            </div>
+        @else
+            <div class="alert alert-danger" role="alert">
+                {{Session::get('message')}}
+            </div>
+        @endif
+        
     @endif
 
     <div class="my-3 col-12 col-sm-8 col-md-5">
@@ -54,11 +61,20 @@
                     </td> --}}
                     {{-- <td>{{$data->class->homeRoomTeacher->name}}</td> --}}
                     <td>
-                        <a href="student/{{$data->id}}">Detail</a>
-                        |
-                        <a href="student-edit/{{$data->id}}">Edit</a>
-                        |
-                        <a href="student-delete/{{$data->id}}">Delete</a>
+                        @if(Auth::user()->role_id == 1 || Auth::user()->role_id == 2)
+                            <a href="student/{{$data->id}}">Detail</a>
+                            |
+                            <a href="student-edit/{{$data->id}}">Edit</a>
+                        @else
+                            -
+                        @endif
+                           
+                        @if(Auth::user()->role_id == 1)
+                            |
+                            <a href="student-delete/{{$data->id}}">Delete</a>
+                        @endif
+                       
+                        
                     </td>
                 </tr>
             @endforeach
