@@ -61,6 +61,18 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Product</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/list-provinsi">API</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link 
+                        @if($pageTitle == 'Cek Ongkir')
+                            active
+                        @endif
+                    " aria-current="page" href="/cek-ongkir">Ongkir</a>
+                </li>
+
+                
             </ul>
             <ul class="navbar-nav">
                 <li class="nav-item">

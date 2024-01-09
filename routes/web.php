@@ -4,8 +4,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ClassController;
 use App\Http\Controllers\EkskulController;
+use App\Http\Controllers\OngkirController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\ListProvinsiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,6 +53,10 @@ Route::get('/ekskul/{id}', [EkskulController::class, 'show'])->middleware('auth'
 
 Route::get('/teacher', [TeacherController::class, 'index'])->middleware('auth');
 Route::get('/teacher/{id}', [TeacherController::class, 'show'])->middleware('auth');
+
+Route::get('/list-provinsi', [ListProvinsiController::class, 'index'])->middleware('auth');
+Route::get('/cek-ongkir', [OngkirController::class, 'index'])->middleware('auth');
+Route::post('/cek-ongkir', [OngkirController::class, 'cekOngkir'])->middleware('auth');
 
 Route::get('/about', function () {
     return view('about', ['pageTitle' => 'about']);    
