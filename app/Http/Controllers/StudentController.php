@@ -264,4 +264,10 @@ class StudentController extends Controller
 
         return redirect('/students');
     }
+
+    public function getAPI()
+    {
+        $data = Student::all();
+        return response()->json($data);
+    }
 }

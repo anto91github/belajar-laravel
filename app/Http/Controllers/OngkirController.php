@@ -46,4 +46,32 @@ class OngkirController extends Controller
             'pageTitle' => 'Cek Ongkir',
         ]);
     }
+
+    public function testUpdate()
+    {
+        $response = Http::withToken('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNzA0ODU3NTMwLCJleHAiOjE3MDQ4NzU1MzB9.teQUrlJvPXdUU-GaZdvoiUOyrQjgir6twXvgXLPNqOk')
+                    ->put('http://localhost:8080/auth/edituser/14',[
+                        "name" => "bobi2",
+                        "alamat" => "jkt",
+                        "umur" => "18",
+                        "nohp" => "777"
+                    ]);
+        dd($response['metadata']);
+    }
+
+    public function testDelete()
+    {
+        $response = Http::withToken('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNzA0ODU3NTMwLCJleHAiOjE3MDQ4NzU1MzB9.teQUrlJvPXdUU-GaZdvoiUOyrQjgir6twXvgXLPNqOk')
+                    ->delete('http://localhost:8080/auth/deleteuser/13');
+        dd($response->json());
+    }
+
+    public function testSignIn()
+    {
+        $response = Http::post('http://localhost:8080/auth/signin',[
+            'username' => 'admin',
+            'password' => '12345'
+        ]);
+        dd($response->json());
+    }
 }

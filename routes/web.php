@@ -57,6 +57,9 @@ Route::get('/teacher/{id}', [TeacherController::class, 'show'])->middleware('aut
 Route::get('/list-provinsi', [ListProvinsiController::class, 'index'])->middleware('auth');
 Route::get('/cek-ongkir', [OngkirController::class, 'index'])->middleware('auth');
 Route::post('/cek-ongkir', [OngkirController::class, 'cekOngkir'])->middleware('auth');
+Route::get('/test-update', [OngkirController::class, 'testUpdate'])->middleware('auth');
+Route::get('/test-delete', [OngkirController::class, 'testDelete'])->middleware('auth');
+Route::get('/test-signIn', [OngkirController::class, 'testSignIn'])->middleware('auth');
 
 Route::get('/about', function () {
     return view('about', ['pageTitle' => 'about']);    
