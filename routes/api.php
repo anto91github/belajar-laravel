@@ -22,3 +22,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/testGet', [StudentController::class, 'getAPI']);
 Route::get('/getPosts', [PostController::class, 'index']);
+Route::get('/getPosts/{id}', [PostController::class, 'show']);
+Route::get('/getPosts2/{id}', [PostController::class, 'show2']);
