@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\AuthenticationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +21,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::post('login',[AuthenticationController::class, 'login']);
+Route::get('logout',[AuthenticationController::class, 'logout'])->middleware(['auth:sanctum']);
+Route::get('me',[AuthenticationController::class, 'me'])->middleware(['auth:sanctum']);
+
 Route::get('/testGet', [StudentController::class, 'getAPI']);
-Route::get('/getPosts', [PostController::class, 'index']);
-Route::get('/getPosts/{id}', [PostController::class, 'show']);
-Route::get('/getPosts2/{id}', [PostController::class, 'show2']);
+Route::get('/getPosts', [PostController::class, 'index'])->middleware(['auth:sanctum']);
+Route::get('/getPosts/{id}', [PostController::class, 'show'])->middleware(['auth:sanctum']);
+Route::get('/getPosts2/{id}', [PostController::class, 'show2'])->middleware(['auth:sanctum']);
