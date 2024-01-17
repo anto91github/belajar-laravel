@@ -22,10 +22,18 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post('login',[AuthenticationController::class, 'login']);
-Route::get('logout',[AuthenticationController::class, 'logout'])->middleware(['auth:sanctum']);
-Route::get('me',[AuthenticationController::class, 'me'])->middleware(['auth:sanctum']);
+
 
 Route::get('/testGet', [StudentController::class, 'getAPI']);
-Route::get('/getPosts', [PostController::class, 'index'])->middleware(['auth:sanctum']);
-Route::get('/getPosts/{id}', [PostController::class, 'show'])->middleware(['auth:sanctum']);
-Route::get('/getPosts2/{id}', [PostController::class, 'show2'])->middleware(['auth:sanctum']);
+Route::get('/getPosts', [PostController::class, 'index']);
+Route::get('/getPosts/{id}', [PostController::class, 'show']);
+Route::get('/getPosts2/{id}', [PostController::class, 'show2']);
+
+
+Route::middleware(['auth:sanctum'])->group(function () {
+    Route::get('/logout',[AuthenticationController::class, 'logout']);
+    Route::get('/me',[AuthenticationController::class, 'me']);
+    Route::post('/posts', [PostController::class, 'store']);
+    Route::patch('/posts/{id}', [PostController::class, 'update'])->middleware('pemilik-postingan');
+    Route::delete('/posts/{id}', [PostController::class, 'destroy'])->middleware('pemilik-postingan');
+});
