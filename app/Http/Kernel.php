@@ -67,5 +67,6 @@ class Kernel extends HttpKernel
         'must-admin' => \App\Http\Middleware\MustAdmin::class,
         'must-admin-or-teacher' => \App\Http\Middleware\MustAdminOrTeacher::class,
         'pemilik-postingan' => \App\Http\Middleware\PemilikPosting::class,
+        'pemilik-komen' => \App\Http\Middleware\PemilikKomen::class,
     ];
 }

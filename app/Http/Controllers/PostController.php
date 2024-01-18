@@ -14,13 +14,14 @@ class PostController extends Controller
     {
         // $data = Post::all();
         // return response()->json(['data'=>$data]);
-        $data = Post::with('writer:id,name')->get();
+
+        $data = Post::with(['writer:id,name', 'commentsUser:id,post_id,comments_content,user_id'])->get();
         return PostDetailResource::collection($data);
     }
 
     public function show($id)
     {
-        $post = Post::with('writer:id,name')->findOrFail($id);
+        $post = Post::with(['writer:id,name', 'commentsUser:id,post_id,comments_content,user_id'])->findOrFail($id);
         return new PostDetailResource($post);
     }
 

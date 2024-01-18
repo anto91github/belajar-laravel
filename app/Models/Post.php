@@ -18,4 +18,14 @@ class Post extends Model
     {
         return $this->belongsTo(User::class, 'author', 'id');
     }
+
+    // public function comments(): BelongsToMany
+    // {
+    //     return $this->belongsToMany(Comment::class, 'comments', 'post_id', 'user_id');
+    // }
+
+    public function commentsUser()
+    {
+        return $this->hasMany(Comment::class, 'post_id', 'id');
+    }
 }
