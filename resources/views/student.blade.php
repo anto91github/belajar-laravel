@@ -84,5 +84,5 @@
         {{$studentList->withQueryString()->links()}}
     </div>
     
-    
+    <x-alert messages='halaman student' type='success'/>
 @endsection

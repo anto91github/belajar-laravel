@@ -6,6 +6,8 @@
     <h2> Welcome {{Auth::user()->name}}</h2>
     <h2> Your role {{Auth::user()->role->name}}</h2>
     
+    <x-alert messages='ini adalah halaman home' type='primary'/>
+    <x-button/>
 
     {{-- @if ($role == 'admin')
         <a href=""> go to admin </a>
