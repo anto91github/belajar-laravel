@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Student;
 use App\Models\ClassRoom;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
@@ -103,7 +104,8 @@ class StudentController extends Controller
     }
 
     public function show($id){
-        $student = Student::with(['class.homeRoomTeacher', 'ekskul'])->findOrFail($id);
+        // $student = Student::with(['class.homeRoomTeacher', 'ekskul'])->findOrFail($id);
+        $student = Student::with(['class.homeRoomTeacher', 'ekskul'])->where('slug',$id)->first();
         return view('student-detail',[
             'pageTitle' => 'students',
             'student' => $student
@@ -158,6 +160,7 @@ class StudentController extends Controller
         // $request['image'] = $fileName; // agar megisi ke kolom 'image' jika menggunakan mass assignment
         $student = Student::create([
             'name' => $request->name,
+            'slug' => Str::slug($request->name, '_'),
             'gender' => $request->gender,
             'nis' => $request->nis,
             'class_id' => $request->class_id,
@@ -263,6 +266,15 @@ class StudentController extends Controller
         }
 
         return redirect('/students');
+    }
+
+    public function massUpdate()
+    {
+        $students = Student::whereNull('slug')->get();
+        collect($students)->map(function ($item, $key) {
+            $item->slug = Str::slug($item->name, '_');
+            $item->save();
+        });
     }
 
     public function getAPI()

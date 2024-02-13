@@ -13,7 +13,7 @@ class Student extends Model
     use HasFactory, SoftDeletes;
     protected $table = 'students';
     protected $primaryKey = 'id';
-    protected $fillable = ['name', 'nis', 'gender', 'class_id','image'];
+    protected $fillable = ['name', 'slug', 'nis', 'gender', 'class_id','image'];
 
     public function class()
     {

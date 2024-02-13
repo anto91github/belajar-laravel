@@ -62,7 +62,7 @@
                     {{-- <td>{{$data->class->homeRoomTeacher->name}}</td> --}}
                     <td>
                         @if(Auth::user()->role_id == 1 || Auth::user()->role_id == 2)
-                            <a href="student/{{$data->id}}">Detail</a>
+                            <a href="student/{{$data->slug}}">Detail</a>
                             |
                             <a href="student-edit/{{$data->id}}">Edit</a>
                         @else
