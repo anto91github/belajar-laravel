@@ -160,7 +160,7 @@ class StudentController extends Controller
         // $request['image'] = $fileName; // agar megisi ke kolom 'image' jika menggunakan mass assignment
         $student = Student::create([
             'name' => $request->name,
-            'slug' => Str::slug($request->name, '_'),
+            //'slug' => Str::slug($request->name, '_'),
             'gender' => $request->gender,
             'nis' => $request->nis,
             'class_id' => $request->class_id,
