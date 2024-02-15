@@ -95,7 +95,6 @@ class StudentController extends Controller
         });
 
         // dd($multiplied);
-
         return view('student',[
             'pageTitle' => 'students',
             'studentList' => $studentList

@@ -89,3 +89,10 @@ Route::prefix('admin')->group(function () {
     });
 });
 
+Route::get('/create-log', function () {
+    Log::info('ini adalah log');
+    Log::alert('ini adalah alert');
+    Log::debug('ini debug');
+    Log::warning('Warning');
+});
+
