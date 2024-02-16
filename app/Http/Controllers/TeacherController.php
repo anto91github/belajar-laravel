@@ -9,7 +9,7 @@ class TeacherController extends Controller
 {
     public function index(){
 
-        $teacherList = Teacher::all();
+        $teacherList = Teacher::with('domicile')->get();
         return view('teacher',[
             'pageTitle' => 'teacher',
             'teacherList' => $teacherList

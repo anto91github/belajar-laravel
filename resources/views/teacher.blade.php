@@ -13,6 +13,7 @@
         <thead>
             <th>#</th>
             <th>Name</th>
+            <th>Domicile</th>
             <th>Action</th>
         </thead>
         <tbody>            
@@ -20,6 +21,7 @@
             <tr>
                 <td>{{$loop->iteration}} </td>
                 <td>{{$data->name}} </td>
+                <td>{{$data->domicile->domicile_name}} </td>
                 <td><a href="teacher/{{$data->id}}">Detail</a></td>
             </tr>
             @endforeach            

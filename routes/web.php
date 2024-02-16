@@ -7,6 +7,7 @@ use App\Http\Controllers\EkskulController;
 use App\Http\Controllers\OngkirController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\DomicileController;
 use App\Http\Controllers\ListProvinsiController;
 
 /*
@@ -54,6 +55,7 @@ Route::get('/ekskul/{id}', [EkskulController::class, 'show'])->middleware('auth'
 
 Route::get('/teacher', [TeacherController::class, 'index'])->middleware('auth');
 Route::get('/teacher/{id}', [TeacherController::class, 'show'])->middleware('auth');
+Route::get('/domicile', [DomicileController::class, 'index'])->middleware('auth');
 
 Route::get('/list-provinsi', [ListProvinsiController::class, 'index'])->middleware('auth');
 Route::get('/cek-ongkir', [OngkirController::class, 'index'])->middleware('auth');

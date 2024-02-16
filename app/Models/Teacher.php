@@ -15,4 +15,9 @@ class Teacher extends Model
     //    return $this->hasOne(ClassRoom::class, 'teacher_id', 'id');
        return $this->hasOne(ClassRoom::class);
    }
+
+   public function domicile()
+   {
+       return $this->belongsTo(Domicile::class, 'domicile_id', 'id');
+   }
 }
