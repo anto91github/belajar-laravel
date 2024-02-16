@@ -14,7 +14,17 @@ class Student extends Model
     use HasFactory, SoftDeletes, Sluggable;
     protected $table = 'students';
     protected $primaryKey = 'id';
-    protected $fillable = ['name', 'slug', 'nis', 'gender', 'class_id','image'];
+    protected $fillable = ['name', 'uuid', 'slug', 'nis', 'gender', 'class_id','image'];
+
+    /*public function getIncrementing()
+    {
+        return false;
+    }
+
+    public function getKeyType()
+    {
+        return 'string';
+    }*/
 
     public function sluggable(): array
     {

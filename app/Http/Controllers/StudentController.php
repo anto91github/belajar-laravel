@@ -160,6 +160,7 @@ class StudentController extends Controller
         $student = Student::create([
             'name' => $request->name,
             //'slug' => Str::slug($request->name, '_'),
+            'uuid' => Str::uuid(),
             'gender' => $request->gender,
             'nis' => $request->nis,
             'class_id' => $request->class_id,
